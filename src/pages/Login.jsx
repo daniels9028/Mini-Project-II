@@ -19,9 +19,9 @@ const Login = () => {
           <div className="flex flex-col w-full px-8 py-8 xl:w-1/3">
             <div className="flex items-center space-x-3">
               <img src={logo} alt="logo" className="w-8 h-8" />
-              <h3 className="text-xl font-bold">Nmixx</h3>
+              <h3 className="text-2xl font-bold">Nmixx</h3>
             </div>
-            <p className="my-8 text-lg font-semibold">Nice to see you again</p>
+            <p className="my-8 text-xl font-bold">Sign In</p>
 
             <Input name="email" placeholder="Input your email" type="text" />
 
@@ -57,7 +57,7 @@ const Login = () => {
             <div className="flex flex-col items-center justify-center gap-2 mt-6 font-medium text-center lg:flex-row">
               <p>Don't have an account?</p>
               <Link to="/register" className="text-blue-500 cursor-pointer ">
-                Sign up now
+                Sign Up
               </Link>
             </div>
           </div>
