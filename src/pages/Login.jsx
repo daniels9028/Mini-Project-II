@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import login from "../assets/login.png";
 import logo from "../assets/logo.png";
 import Input from "../components/Input";
@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import google from "../assets/google.webp";
 
 const Login = () => {
+  useEffect(() => {
+    document.title = "Login | Nmixx";
+  }, []);
+
   return (
     <div className="w-full bg-gray-200">
       <div className="container flex items-center justify-center min-h-screen p-5 mx-auto text-black lg:p-10">
