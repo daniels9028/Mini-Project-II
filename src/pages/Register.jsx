@@ -44,7 +44,7 @@ const Register = () => {
           <img
             src={register}
             alt="register"
-            className="hidden object-cover w-2/3 xl:flex"
+            className="hidden object-cover w-2/3 xl:flex h-[700px]"
           />
         </div>
       </div>
