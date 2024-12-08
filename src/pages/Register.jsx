@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import register from "../assets/register.jpg";
 import logo from "../assets/logo.png";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
-import google from "../assets/google.webp";
 
 const Register = () => {
+  useEffect(() => {
+    document.title = "Register | Nmixx";
+  }, []);
+
   return (
     <div className="w-full bg-gray-200">
       <div className="container flex items-center justify-center min-h-screen p-5 mx-auto text-black lg:p-10">
