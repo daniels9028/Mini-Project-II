@@ -46,7 +46,12 @@ const Login = () => {
 
             <Button name="Sign In" className="font-bold bg-blue-500" />
 
-            <hr className="mt-6 border border-gray-200" />
+            {/* <hr className="border border-gray-200" /> */}
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <div class="flex-grow border-t border-gray-400"></div>
+              <p className="font-semibold tracking-wide">Or</p>
+              <div class="flex-grow border-t border-gray-400"></div>
+            </div>
 
             <Button
               name="Sign In with Google"
