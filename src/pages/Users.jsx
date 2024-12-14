@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import design from "../assets/design.png";
+import { Link } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -11,7 +12,6 @@ const Users = () => {
       const data = await axios.get("https://reqres.in/api/users");
 
       setUsers(data.data.data);
-      console.log(data.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -23,30 +23,32 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="w-full bg-gray-200 lg:p-10 p-5">
-      <div className="container mx-auto lg:p-10 p-5 min-h-screen bg-white rounded-xl">
-        <div className="flex flex-col justify-center items-center py-10">
-          <h3 className="font-bold text-2xl">List Users</h3>
-          <div className="grid lg:grid-cols-3 grid-cols-1 place-items-center gap-8 mt-10">
+    <div className="w-full p-5 bg-gray-200 lg:p-10">
+      <div className="container min-h-screen p-5 mx-auto bg-white lg:p-10 rounded-xl">
+        <div className="flex flex-col items-center justify-center py-10">
+          <h3 className="text-2xl font-bold">List Users</h3>
+          <div className="grid grid-cols-1 gap-8 mt-10 lg:grid-cols-3 place-items-center">
             {users.map((user) => (
               <div
                 key={user.id}
                 className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 rounded-lg overflow-hidden w-[300px] flex flex-col items-center justify-center py-8 border border-black shadow-lg relative"
               >
-                <div className="rounded-lg border-2 border-white overflow-hidden ">
+                <div className="overflow-hidden border-2 border-white rounded-lg ">
                   <img
                     src={user.avatar}
                     alt={user.id}
-                    className="w-20 object-cover hover:scale-150 transition-all duration-300"
+                    className="object-cover w-20 transition-all duration-300 hover:scale-150"
                   />
                 </div>
-                <p className="mt-4 font-bold text-lg text-white">
+                <p className="mt-4 text-lg font-bold text-white">
                   {user.first_name} {user.last_name}
                 </p>
                 <p className="mt-2 font-medium text-white">{user.email}</p>
-                <button className="mt-6 bg-black text-white font-semibold rounded-full px-6 tracking-wider py-2 border hover:bg-white  border-black hover:text-black transition-all duration-300">
-                  Detail
-                </button>
+                <Link to={`/detail_user/${user.id}`}>
+                  <button className="px-6 py-2 mt-6 font-semibold tracking-wider text-white transition-all duration-300 bg-black border border-black rounded-full hover:bg-white hover:text-black">
+                    Detail
+                  </button>
+                </Link>
               </div>
             ))}
           </div>
