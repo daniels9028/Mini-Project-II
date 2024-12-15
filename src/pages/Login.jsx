@@ -31,7 +31,7 @@ const Login = () => {
 
       localStorage.setItem("token", res.data.token);
 
-      setSuccess("Anda Berhasil Login");
+      setSuccess("Login was successfully");
 
       setTimeout(() => {
         navigate("/users");
@@ -79,6 +79,7 @@ const Login = () => {
               name="email"
               placeholder="Input your email"
               type="text"
+              title="email"
               onChange={handleChange}
             />
 
@@ -86,6 +87,7 @@ const Login = () => {
               name="password"
               placeholder="Input your password"
               type="password"
+              title="password"
               onChange={handleChange}
             />
 
