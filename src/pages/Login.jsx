@@ -1,12 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import login from "../assets/login.png";
 import logo from "../assets/logo.png";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import google from "../assets/google.webp";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleLogin = async () => {
+    try {
+      setError("");
+      setLoading(true);
+
+      const res = await axios.post("https://reqres.in/api/login", form);
+
+      localStorage.setItem("token", res.data.token);
+
+      setSuccess("Anda Berhasil Login");
+
+      setTimeout(() => {
+        navigate("/users");
+      }, 1000);
+    } catch (error) {
+      setError(error.response.data.error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     document.title = "Login | Nmixx";
   }, []);
@@ -27,19 +63,37 @@ const Login = () => {
             </div>
             <p className="my-8 text-xl font-bold">Sign In</p>
 
-            <Input name="email" placeholder="Input your email" type="text" />
+            {error && (
+              <p className="px-4 py-2 tracking-wide text-white capitalize bg-red-500 rounded-lg">
+                {error}
+              </p>
+            )}
+
+            {success && (
+              <p className="px-4 py-2 tracking-wide text-white capitalize bg-green-500 rounded-lg">
+                {success}
+              </p>
+            )}
+
+            <Input
+              name="email"
+              placeholder="Input your email"
+              type="text"
+              onChange={handleChange}
+            />
 
             <Input
               name="password"
               placeholder="Input your password"
               type="password"
+              onChange={handleChange}
             />
 
             <div className="flex items-center justify-between mt-6 lg:flex-row">
-              <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" value="" class="sr-only peer" />
-                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+              <label className="inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" className="sr-only peer" />
+                <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <span className="text-sm font-medium text-gray-900 ms-3 dark:text-gray-300">
                   Remember me
                 </span>
               </label>
@@ -48,13 +102,18 @@ const Login = () => {
               </p>
             </div>
 
-            <Button name="Sign In" className="font-bold bg-blue-500" />
+            <Button
+              name="Sign In"
+              className="font-bold bg-blue-500 disabled:bg-blue-400"
+              onClick={handleLogin}
+              loading={loading}
+            />
 
             {/* <hr className="border border-gray-200" /> */}
             <div className="flex items-center justify-center gap-4 mt-6">
-              <div class="flex-grow border-t border-gray-400"></div>
+              <div className="flex-grow border-t border-gray-400"></div>
               <p className="font-semibold tracking-wide">Or</p>
-              <div class="flex-grow border-t border-gray-400"></div>
+              <div className="flex-grow border-t border-gray-400"></div>
             </div>
 
             <Button
