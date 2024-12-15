@@ -6,10 +6,25 @@ import { Link } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [page, setPage] = useState({
+    page: 1,
+    per_page: 0,
+    total: 0,
+    total_pages: 0,
+  });
 
   const getUsers = async () => {
     try {
-      const data = await axios.get("https://reqres.in/api/users");
+      const data = await axios.get(
+        `https://reqres.in/api/users?page=${page.page}`
+      );
+
+      setPage({
+        ...page,
+        per_page: data.data.per_page,
+        total: data.data.total,
+        total_pages: data.data.total_pages,
+      });
 
       setUsers(data.data.data);
     } catch (error) {
@@ -17,10 +32,22 @@ const Users = () => {
     }
   };
 
+  const handleBack = () => {
+    setPage({ ...page, page: page.page - 1 });
+  };
+
+  const handleNext = () => {
+    setPage({ ...page, page: page.page + 1 });
+  };
+
   useEffect(() => {
     document.title = "Users | Nmixx";
     getUsers();
   }, []);
+
+  useEffect(() => {
+    getUsers();
+  }, [page.page]);
 
   return (
     <div className="w-full p-5 bg-gray-200 lg:p-10">
@@ -31,13 +58,13 @@ const Users = () => {
             {users.map((user) => (
               <div
                 key={user.id}
-                className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 rounded-lg overflow-hidden w-[300px] flex flex-col items-center justify-center py-8 border border-black shadow-lg relative"
+                className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 rounded-lg overflow-hidden h-[300px] w-[300px] flex flex-col items-center justify-center py-8 border border-black shadow-lg relative"
               >
                 <div className="overflow-hidden border-2 border-white rounded-lg ">
                   <img
                     src={user.avatar}
                     alt={user.id}
-                    className="object-cover w-20 transition-all duration-300 hover:scale-150"
+                    className="object-cover w-20 h-20 transition-all duration-300 hover:scale-150"
                   />
                 </div>
                 <p className="mt-4 text-lg font-bold text-white">
@@ -51,6 +78,23 @@ const Users = () => {
                 </Link>
               </div>
             ))}
+          </div>
+          <div className="flex flex-row items-center justify-center gap-10 mt-10">
+            <button
+              className="px-4 py-2 font-medium tracking-wider text-white bg-blue-500 rounded-full disabled:bg-blue-400 disabled:cursor-not-allowed"
+              disabled={page.page === 1}
+              onClick={handleBack}
+            >
+              Back
+            </button>
+            {page.page}
+            <button
+              className="px-4 py-2 font-medium tracking-wider text-white bg-blue-500 rounded-full disabled:bg-blue-400 disabled:cursor-not-allowed"
+              onClick={handleNext}
+              disabled={page.total_pages === page.page}
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>
