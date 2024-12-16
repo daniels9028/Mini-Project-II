@@ -56,7 +56,7 @@ const Users = () => {
         <div className="container min-h-screen p-5 mx-auto bg-white lg:p-10 rounded-xl">
           <div className="flex flex-col items-center justify-center py-10">
             <h3 className="text-2xl font-bold">List Users</h3>
-            <div className="grid grid-cols-1 gap-8 mt-10 lg:grid-cols-3 place-items-center">
+            <div className="grid grid-cols-1 gap-8 mt-10 xl:grid-cols-3 lg:grid-cols-2 place-items-center">
               {users.map((user) => (
                 <div
                   key={user.id}
