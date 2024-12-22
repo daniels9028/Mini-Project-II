@@ -44,11 +44,15 @@ const Register = () => {
       setSuccess("Register user was successfully");
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
       }, 1000);
     } catch (error) {
       console.log(error);
-      setError(error.response.data.error);
+      setError(
+        error.response.data.error === "Missing email or username"
+          ? "Missing email"
+          : error.response.data.error
+      );
     } finally {
       setLoading(false);
     }
@@ -114,7 +118,7 @@ const Register = () => {
 
             <div className="flex flex-col items-center justify-center gap-2 mt-6 font-medium text-center lg:flex-row">
               <p>Already have an account?</p>
-              <Link to="/" className="text-blue-500 cursor-pointer ">
+              <Link to="/login" className="text-blue-500 cursor-pointer ">
                 Sign In
               </Link>
             </div>

@@ -37,7 +37,12 @@ const Login = () => {
         navigate("/users");
       }, 1000);
     } catch (error) {
-      setError(error.response.data.error);
+      console.log(error);
+      setError(
+        error.response.data.error === "Missing email or username"
+          ? "Missing email"
+          : error.response.data.error
+      );
     } finally {
       setLoading(false);
     }
