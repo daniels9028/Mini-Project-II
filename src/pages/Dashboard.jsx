@@ -10,6 +10,7 @@ import custom3 from "../assets/custom/custom3.png";
 import Printing from "../components/Printing";
 import OurPicks from "../components/OurPicks";
 import Products from "../components/Products";
+import Testimonial from "../components/Testimonial";
 
 import picks1 from "../assets/picks/picks1.png";
 import picks2 from "../assets/picks/picks2.png";
@@ -22,6 +23,9 @@ import product3 from "../assets/products/product3.png";
 import product4 from "../assets/products/product4.png";
 import product5 from "../assets/products/product5.png";
 import product6 from "../assets/products/product6.png";
+
+import resource1 from "../assets/resources/resource1.png";
+import resource2 from "../assets/resources/resource2.png";
 
 const customs = [
   {
@@ -112,6 +116,45 @@ const products = [
   },
 ];
 
+const resources = [
+  {
+    id: 1,
+    title: "Make yourself happy with our T-shirt customer…",
+    tags: ["Design Services"],
+    image: resource1,
+  },
+  {
+    id: 2,
+    title: "Are you ready to make it awesome with us",
+    tags: ["Print Company", "Print Shop"],
+    image: resource2,
+  },
+];
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Dean D.",
+    position: "Director",
+    comment:
+      "Great quality products - Flags, programs for exceptional capacities, birthday, and occasion welcome are largely still mainstream on paper.",
+  },
+  {
+    id: 2,
+    name: "Cristian L.",
+    position: "Manager",
+    comment:
+      "Best services ever - Flags, programs for exceptional capacities, birthday, and are largely still mainstream on paper occasion welcome.",
+  },
+  {
+    id: 3,
+    name: "Leonel R.",
+    position: "Designer",
+    comment:
+      "Top noth support - Flags, programs for, birthday, and occasion welcome are largely still mainstream on paper exceptional capacities.",
+  },
+];
+
 const Dashboard = () => {
   useEffect(() => {
     document.title = "Dashboard | TeeSpace";
@@ -125,6 +168,7 @@ const Dashboard = () => {
       <Printing />
       <OurPicks picks={picks} />
       <Products products={products} />
+      <Testimonial resources={resources} testimonials={testimonials} />
     </>
   );
 };
