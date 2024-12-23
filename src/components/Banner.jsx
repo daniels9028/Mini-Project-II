@@ -5,8 +5,8 @@ import { FaRegPlayCircle } from "react-icons/fa";
 
 const Banner = () => {
   return (
-    <div className="container px-5 mx-auto mt-32 lg:px-10 bg-white">
-      <div className="grid lg:grid-cols-2 grid-cols-1 place-items-start gap-4">
+    <div className="container px-5 mx-auto mt-24 lg:px-10 bg-white">
+      <div className="grid lg:grid-cols-2 grid-cols-1 place-items-start gap-4 py-16">
         <div className="lg:order-first order-last">
           <p className="bg-[#B479D9]/15 w-fit py-2 px-4 text-[#B479D9] font-bold rounded-full">
             Create your own

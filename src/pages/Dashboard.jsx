@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
+import Main from "../components/Main";
 
 const Dashboard = () => {
   useEffect(() => {
@@ -10,6 +11,7 @@ const Dashboard = () => {
     <>
       <Navbar />
       <Banner />
+      <Main />
     </>
   );
 };
