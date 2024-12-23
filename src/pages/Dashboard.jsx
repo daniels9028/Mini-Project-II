@@ -7,6 +7,7 @@ import Custom from "../components/Custom";
 import custom1 from "../assets/custom/custom1.png";
 import custom2 from "../assets/custom/custom2.png";
 import custom3 from "../assets/custom/custom3.png";
+import Printing from "../components/Printing";
 
 const customs = [
   {
@@ -41,6 +42,7 @@ const Dashboard = () => {
       <Banner />
       <Main />
       <Custom customs={customs} />
+      <Printing />
     </>
   );
 };
