@@ -16,6 +16,13 @@ import picks2 from "../assets/picks/picks2.png";
 import picks3 from "../assets/picks/picks3.png";
 import picks4 from "../assets/picks/picks4.png";
 
+import product1 from "../assets/products/product1.png";
+import product2 from "../assets/products/product2.png";
+import product3 from "../assets/products/product3.png";
+import product4 from "../assets/products/product4.png";
+import product5 from "../assets/products/product5.png";
+import product6 from "../assets/products/product6.png";
+
 const customs = [
   {
     id: 1,
@@ -66,6 +73,45 @@ const picks = [
   },
 ];
 
+const products = [
+  {
+    id: 1,
+    title: "No Die & plate charges",
+    description: "No Charges for Die & Plates",
+    image: product1,
+  },
+  {
+    id: 2,
+    title: "High quality offset printing",
+    description: "Outstanding Quality, Flawless Prints",
+    image: product2,
+  },
+  {
+    id: 3,
+    title: "Secure payment",
+    description: "Trustworthy and Safe Transactions",
+    image: product3,
+  },
+  {
+    id: 4,
+    title: "Custom size & style",
+    description: "Unique Sizes and Styles, Exclusively Yours",
+    image: product4,
+  },
+  {
+    id: 5,
+    title: "Fast & free delivery",
+    description: "Delivered Fast, Delivered Free",
+    image: product5,
+  },
+  {
+    id: 6,
+    title: "Low minimum order quantity",
+    description: "Order as Little as You Need",
+    image: product6,
+  },
+];
+
 const Dashboard = () => {
   useEffect(() => {
     document.title = "Dashboard | TeeSpace";
@@ -78,7 +124,7 @@ const Dashboard = () => {
       <Custom customs={customs} />
       <Printing />
       <OurPicks picks={picks} />
-      <Products />
+      <Products products={products} />
     </>
   );
 };
