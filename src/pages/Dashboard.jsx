@@ -9,6 +9,7 @@ import custom2 from "../assets/custom/custom2.png";
 import custom3 from "../assets/custom/custom3.png";
 import Printing from "../components/Printing";
 import OurPicks from "../components/OurPicks";
+import Products from "../components/Products";
 
 import picks1 from "../assets/picks/picks1.png";
 import picks2 from "../assets/picks/picks2.png";
@@ -77,6 +78,7 @@ const Dashboard = () => {
       <Custom customs={customs} />
       <Printing />
       <OurPicks picks={picks} />
+      <Products />
     </>
   );
 };
