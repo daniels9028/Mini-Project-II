@@ -59,7 +59,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    document.title = "Register | Nmixx";
+    document.title = "Register | TeeSpace";
   }, []);
 
   return (

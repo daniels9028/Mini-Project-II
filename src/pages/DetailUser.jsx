@@ -19,7 +19,7 @@ const DetailUser = () => {
   };
 
   useEffect(() => {
-    document.title = "Detail User | Nmixx";
+    document.title = "Detail User | TeeSpace";
     getDetailUser();
   }, []);
 
