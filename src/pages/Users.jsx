@@ -41,7 +41,7 @@ const Users = () => {
   };
 
   useEffect(() => {
-    document.title = "Users | Nmixx";
+    document.title = "Users | TeeSpace";
     getUsers();
   }, []);
 

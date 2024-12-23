@@ -49,7 +49,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    document.title = "Login | Nmixx";
+    document.title = "Login | TeeSpace";
   }, []);
 
   return (
