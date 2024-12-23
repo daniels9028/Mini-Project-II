@@ -29,7 +29,7 @@ const Printing = () => {
           </p>
         </div>
         <div className="grid lg:grid-cols-2 grid-cols-1 place-items-center mt-20 gap-8">
-          <div className="flex flex-col justify-center gap-4">
+          <div className="flex flex-col justify-center gap-4 lg:order-first order-last">
             <p className="pl-6 font-bold text-[20px] leading-[28px]">
               Premium quality custom t-shirts
             </p>
