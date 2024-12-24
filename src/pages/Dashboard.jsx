@@ -31,6 +31,7 @@ import testi3 from "../assets/testimonials/testi3.png";
 import resource1 from "../assets/resources/resource1.png";
 import resource2 from "../assets/resources/resource2.png";
 import Testimonials from "../components/Testimonials";
+import Advert from "../components/Advert";
 
 const customs = [
   {
@@ -178,6 +179,7 @@ const Dashboard = () => {
       <Products products={products} />
       <Resources resources={resources} />
       <Testimonials testimonials={testimonials} />
+      <Advert />
     </>
   );
 };
