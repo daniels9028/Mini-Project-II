@@ -43,18 +43,15 @@ const DetailUser = () => {
     setLoad(true);
     try {
       const res = await axios.get(
-        `https://dummyjson.com/comments?limit=${pages.limit}&skip=${pages.skip}`
+        `https://dummyjson.com/comments?limit=10&skip=${pages.skip}`
       );
 
-      setTimeout(() => {
-        setLoad(false);
-        setComments(res.data.comments);
-        setPages({
-          ...pages,
-          total: res.data.total,
-          skip: res.data.skip,
-        });
-      }, 1500);
+      setComments(res.data.comments);
+      setPages({
+        ...pages,
+        total: res.data.total,
+      });
+      setLoad(false);
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +97,7 @@ const DetailUser = () => {
 
   useEffect(() => {
     getAllComments();
-  }, [pages.skip]);
+  }, [pages.page]);
 
   return (
     <>
@@ -189,7 +186,7 @@ const DetailUser = () => {
               <div className="flex flex-row items-center justify-center gap-10 mt-10 ">
                 <button
                   className="px-4 py-2 font-medium tracking-wider bg-white border border-black rounded-full disabled:bg-gray-200 disabled:cursor-not-allowed"
-                  disabled={pages.page === 1}
+                  disabled={pages.page === 1 || load}
                   onClick={handleBack}
                 >
                   Back
@@ -201,7 +198,9 @@ const DetailUser = () => {
                 <button
                   className="px-4 py-2 font-medium tracking-wider bg-white border border-black rounded-full disabled:bg-gray-200 disabled:cursor-not-allowed"
                   onClick={handleNext}
-                  disabled={Math.ceil(pages.total / pages.limit) === pages.page}
+                  disabled={
+                    Math.ceil(pages.total / pages.limit) === pages.page || load
+                  }
                 >
                   Next
                 </button>
