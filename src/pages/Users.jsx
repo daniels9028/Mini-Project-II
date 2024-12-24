@@ -89,7 +89,9 @@ const Users = () => {
               >
                 Back
               </button>
-              {page.page}
+              <div className="flex flex-row items-center gap-2">
+                <p>{page.page}</p> <p>of</p> <p>{page.total_pages}</p>
+              </div>
               <button
                 className="px-4 py-2 font-medium tracking-wider bg-white border border-black rounded-full disabled:bg-gray-200 disabled:cursor-not-allowed"
                 onClick={handleNext}
