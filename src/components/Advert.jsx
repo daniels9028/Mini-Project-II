@@ -13,32 +13,32 @@ const Advert = () => {
       <img
         src={advert1}
         alt="advert1"
-        className="absolute right-0 object-cover rounded-l-xl top-[150px] lg:w-40 w-20 shadow-md shadow-green-500 z-0"
+        className="absolute right-0 object-cover rounded-l-xl top-[150px] lg:w-40 w-20  shadow-green-500 z-0"
       />
       <img
         src={advert2}
         alt="advert2"
-        className="absolute top-0 object-cover lg:w-32 w-20 right-[200px] rounded-b-xl shadow-md shadow-green-500 z-10"
+        className="absolute top-0 object-cover lg:w-32 w-20 right-[200px] rounded-b-xl drop-shadow-lg z-10"
       />
       <img
         src={advert3}
         alt="advert3"
-        className="absolute bottom-0 object-cover lg:w-32 w-20 right-[250px] rounded-t-xl shadow-md shadow-green-500 z-10"
+        className="absolute bottom-0 object-cover lg:w-32 w-20 right-[250px] rounded-t-xl  drop-shadow-lg z-10"
       />
       <img
         src={advert4}
         alt="advert4"
-        className="absolute top-0 object-cover lg:w-52 w-24 left-[200px] rounded-b-xl shadow-md shadow-green-500 z-10"
+        className="absolute top-0 object-cover lg:w-52 w-24 left-[200px] rounded-b-xl  drop-shadow-lg z-10"
       />
       <img
         src={advert5}
         alt="advert5"
-        className="absolute bottom-6 object-cover lg:w-32 w-20 left-[300px] rounded-xl shadow-md shadow-green-500 z-10"
+        className="absolute bottom-6 object-cover lg:w-32 w-20 left-[300px] rounded-xl  drop-shadow-lg z-10"
       />
       <img
         src={advert6}
         alt="advert6"
-        className="absolute left-0 z-10 object-cover w-24 shadow-md lg:w-52 bottom-10 rounded-r-xl shadow-green-500"
+        className="absolute left-0 z-10 object-cover w-24 lg:w-52 bottom-10 rounded-r-xl drop-shadow-lg"
       />
       <div className="flex flex-col items-center justify-center py-24">
         <p className="text-center font-bold text-[48px] leading-[60px] z-20">

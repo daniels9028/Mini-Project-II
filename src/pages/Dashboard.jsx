@@ -32,6 +32,7 @@ import resource1 from "../assets/resources/resource1.png";
 import resource2 from "../assets/resources/resource2.png";
 import Testimonials from "../components/Testimonials";
 import Advert from "../components/Advert";
+import Footer from "../components/Footer";
 
 const customs = [
   {
@@ -164,6 +165,31 @@ const testimonials = [
   },
 ];
 
+const footerLinks = [
+  {
+    id: 1,
+    title: "Information",
+    links: [
+      "About Us",
+      "Our Blog",
+      "Start a Return",
+      "Contact Us",
+      "Shipping FAQ",
+    ],
+  },
+  {
+    id: 2,
+    title: "Usefull Links",
+    links: [
+      "My Account",
+      "Print Provider",
+      "Become a Partner",
+      "Custom Products",
+      "Make your own shirt",
+    ],
+  },
+];
+
 const Dashboard = () => {
   useEffect(() => {
     document.title = "Dashboard | TeeSpace";
@@ -180,6 +206,7 @@ const Dashboard = () => {
       <Resources resources={resources} />
       <Testimonials testimonials={testimonials} />
       <Advert />
+      <Footer footerLinks={footerLinks} />
     </>
   );
 };

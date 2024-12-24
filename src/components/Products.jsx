@@ -5,8 +5,8 @@ import product7 from "../assets/products/product7.png";
 const Products = ({ products }) => {
   return (
     <div className="container mx-auto lg:px-10 px-5 bg-[#F5F5F5] rounded-tr-[500px] rounded-bl-[500px]">
-      <div className="w-full flex lg:flex-row flex-col justify-center items-center gap-6 py-20">
-        <div className="lg:w-2/5 w-full flex flex-col justify-center gap-6">
+      <div className="flex flex-col items-center justify-center w-full gap-6 py-20 lg:flex-row">
+        <div className="flex flex-col justify-center w-full gap-6 lg:w-2/5">
           <p className="font-bold text-[48px] leading-[60px]">
             Why customize products with TeeSpace?
           </p>
@@ -21,8 +21,8 @@ const Products = ({ products }) => {
             View All Features <FaArrowRight color="white" />
           </button>
         </div>
-        <div className="lg:w-3/5 w-full">
-          <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 place-items-center gap-4">
+        <div className="w-full lg:w-3/5">
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-3 lg:grid-cols-2 place-items-center">
             {products.map((product) => (
               <div
                 key={product.id}
@@ -32,7 +32,7 @@ const Products = ({ products }) => {
                   <img
                     src={product.image}
                     alt={product.id}
-                    className="w-full object-cover"
+                    className="object-cover w-full"
                   />
                 </div>
                 <p className="text-[20px] font-bold leading-[28px]">
