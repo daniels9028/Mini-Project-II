@@ -4,10 +4,20 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
+import { FaRegUserCircle } from "react-icons/fa";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
 
 const DetailUser = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
+  const [comments, setComments] = useState([]);
+  const [pages, setPages] = useState({
+    page: 1,
+    skip: 0,
+    total: 0,
+    limit: 10,
+  });
 
   const getDetailUser = async () => {
     try {
@@ -18,10 +28,40 @@ const DetailUser = () => {
     }
   };
 
+  const getAllComments = async () => {
+    try {
+      const res = await axios.get(
+        `https://dummyjson.com/comments?limit=${pages.limit}&skip=${pages.skip}`
+      );
+      console.log(res.data);
+      setComments(res.data.comments);
+      setPages({
+        ...pages,
+        total: res.data.total,
+        skip: res.data.skip,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleBack = () => {
+    setPages({ ...pages, page: pages.page - 1, skip: pages.skip - 10 });
+  };
+
+  const handleNext = () => {
+    setPages({ ...pages, page: pages.page + 1, skip: pages.skip + 10 });
+  };
+
   useEffect(() => {
     document.title = "Detail User | TeeSpace";
     getDetailUser();
+    getAllComments();
   }, []);
+
+  useEffect(() => {
+    getAllComments();
+  }, [pages.skip]);
 
   return (
     <>
@@ -31,14 +71,14 @@ const DetailUser = () => {
           <div className="flex flex-col items-center justify-center py-10">
             <h3 className="text-2xl font-bold">Detail User</h3>
             <div className="relative flex flex-col items-center justify-center w-full p-5 mt-10 overflow-hidden bg-gray-300 border border-gray-400 shadow-lg lg:w-1/2 rounded-xl right-2">
-              <div className="absolute flex items-center justify-center gap-2 top-2 right-2">
+              {/* <div className="absolute flex items-center justify-center gap-2 top-2 right-2">
                 <div className="p-1.5 bg-yellow-500 shadow-md rounded-xl cursor-pointer hover:bg-yellow-600">
                   <CiEdit size={24} />
                 </div>
                 <div className="p-1.5 bg-red-500 shadow-md rounded-xl cursor-pointer hover:bg-red-600">
                   <MdDeleteOutline size={24} />
                 </div>
-              </div>
+              </div> */}
               <img
                 src={user?.avatar}
                 alt={user?.id}
@@ -55,6 +95,55 @@ const DetailUser = () => {
                   Kembali
                 </button>
               </Link>
+            </div>
+            <div className="flex flex-col justify-center w-full p-5 mt-10 overflow-hidden bg-white border shadow-lg rounded-xl right-2">
+              <p className="mb-10 text-xl font-semibold border-b-2 border-black">
+                Comments
+              </p>
+              {comments.map((comment) => (
+                <div
+                  className="p-4 mb-4 bg-gray-200 border border-black rounded-md"
+                  key={comment.id}
+                >
+                  <div className="flex flex-row items-center gap-4">
+                    <FaRegUserCircle size={30} />
+                    <p className="font-bold">{comment.user.fullName}</p>
+                  </div>
+                  <p className="pb-4 mt-4 font-medium border-b border-gray-500">
+                    {comment.body}
+                  </p>
+                  <div className="flex flex-row items-center gap-4 mt-4">
+                    <div className="flex flex-row items-center gap-1">
+                      <AiOutlineLike size={20} />
+                      <p>{comment.likes}</p>
+                    </div>
+                    <div className="flex flex-row items-center gap-1">
+                      <AiOutlineDislike size={20} />
+                    </div>
+                    <p>5 min ago</p>
+                  </div>
+                </div>
+              ))}
+              <div className="flex flex-row items-center justify-center gap-10 mt-10">
+                <button
+                  className="px-4 py-2 font-medium tracking-wider bg-white border border-black rounded-full disabled:bg-gray-200 disabled:cursor-not-allowed"
+                  disabled={pages.page === 1}
+                  onClick={handleBack}
+                >
+                  Back
+                </button>
+                <div className="flex flex-row items-center gap-2">
+                  <p>{pages.page}</p> <p>of</p>{" "}
+                  <p>{pages.total / pages.limit}</p>
+                </div>
+                <button
+                  className="px-4 py-2 font-medium tracking-wider bg-white border border-black rounded-full disabled:bg-gray-200 disabled:cursor-not-allowed"
+                  onClick={handleNext}
+                  disabled={Math.ceil(pages.total / pages.limit) === pages.page}
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
