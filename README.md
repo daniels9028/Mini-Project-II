@@ -1,6 +1,6 @@
-# Tee-Space
+# Tee-Space (Mini Project II)
 
-A brief description of your project goes here.
+Mini Project II at dibimbing.id
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ Follow these steps to get started:
    ```
 2. Navigate to the project directory:
    ```bash
-   cd project-name
+   cd Mini-Project-II
    ```
 3. Install dependencies:
    ```bash
@@ -42,7 +42,18 @@ Follow these steps to get started:
 
 ## Included Libraries
 
-### 1. React DOM
+### 1. React JS
+
+- **Description:** A JavaScript library for building user interfaces.
+- **Documentation:** [React Docs](https://react.dev/)
+- **Usage:**
+  ```javascript
+  import React from 'react';
+  const App = () => <h1>Hello, world!</h1>;
+  export default App;
+  ```
+
+### 2. React DOM
 
 - **Description:** Provides DOM-specific methods for rendering and managing React components in web applications.
 - **Documentation:** [React DOM Docs](https://react.dev/)
@@ -52,7 +63,7 @@ Follow these steps to get started:
   ReactDOM.render(<App />, document.getElementById('root'));
   ```
 
-### 2. React Icons
+### 3. React Icons
 
 - **Description:** A library that provides a wide range of customizable icons from popular icon packs.
 - **Documentation:** [React Icons Docs](https://react-icons.github.io/react-icons/)
@@ -62,7 +73,7 @@ Follow these steps to get started:
   <FaReact size={32} color="blue" />
   ```
 
-### 3. React Router DOM
+### 4. React Router DOM
 
 - **Description:** Enables declarative routing for React applications, making navigation seamless.
 - **Documentation:** [React Router Docs](https://reactrouter.com/)
@@ -77,7 +88,7 @@ Follow these steps to get started:
   </BrowserRouter>
   ```
 
-### 4. Framer Motion
+### 5. Framer Motion
 
 - **Description:** A powerful library for animations and transitions in React applications.
 - **Documentation:** [Framer Motion Docs](https://www.framer.com/motion/)
@@ -87,7 +98,7 @@ Follow these steps to get started:
   <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} />
   ```
 
-### 5. Axios
+### 6. Axios
 
 - **Description:** A promise-based HTTP client for making API requests.
 - **Documentation:** [Axios Docs](https://axios-http.com/)
@@ -97,7 +108,26 @@ Follow these steps to get started:
   axios.get('/api/data').then(response => console.log(response.data));
   ```
 
----
+### 7. Tailwind CSS
+
+- **Description:** A utility-first CSS framework for rapidly building custom designs.
+- **Documentation:** [Tailwind CSS Docs](https://tailwindcss.com/)
+- **Usage:**
+  ```javascript
+  <div className="bg-blue-500 text-white p-4 rounded">Hello, Tailwind!</div>
+  ```
+
+### 8. Vite
+
+- **Description:** A fast build tool and development server for modern web applications.
+- **Documentation:** [Vite Docs](https://vitejs.dev/)
+- **Usage:**
+  ```bash
+  npm create vite@latest my-app
+  cd my-app
+  npm install
+  npm run dev
+  ```
 
 ## Usage
 
