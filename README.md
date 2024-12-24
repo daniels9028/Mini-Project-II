@@ -23,7 +23,7 @@ Follow these steps to get started:
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-repository.git](https://github.com/daniels9028/Mini-Project-II)
+   git clone https://github.com/daniels9028/Mini-Project-II
    ```
 2. Navigate to the project directory:
    ```bash
@@ -35,7 +35,7 @@ Follow these steps to get started:
    ```
 4. Start the development server:
    ```bash
-   npm start
+   npm run dev
    ```
 
 ---
