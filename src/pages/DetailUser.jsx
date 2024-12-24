@@ -7,6 +7,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 const DetailUser = () => {
   const { id } = useParams();
@@ -18,6 +19,14 @@ const DetailUser = () => {
     total: 0,
     limit: 10,
   });
+
+  const [comment, setComment] = useState({
+    body: "",
+  });
+
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
 
   const getDetailUser = async () => {
     try {
@@ -33,7 +42,7 @@ const DetailUser = () => {
       const res = await axios.get(
         `https://dummyjson.com/comments?limit=${pages.limit}&skip=${pages.skip}`
       );
-      console.log(res.data);
+
       setComments(res.data.comments);
       setPages({
         ...pages,
@@ -42,6 +51,30 @@ const DetailUser = () => {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const changeComment = (e) => {
+    setComment({ ...comment, body: e.target.value });
+  };
+
+  const addComment = async () => {
+    setError("");
+    setSuccess("");
+    setLoading(true);
+    try {
+      const res = await axios.post("https://dummyjson.com/comments/add", {
+        body: comment.body,
+        postId: 3,
+        userId: 5,
+      });
+
+      setSuccess("Comment was successfully add!");
+      setComment({ ...comment, body: "" });
+    } catch (error) {
+      setError("Invalid comment!");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,6 +133,8 @@ const DetailUser = () => {
               <p className="mb-10 text-xl font-semibold border-b-2 border-black">
                 Comments
               </p>
+              {success && <p className="mb-4 text-blue-500">{success}</p>}
+              {error && <p className="mb-4 text-red-500">{error}</p>}
               <div className="p-4 mb-4 bg-gray-200 border border-black rounded-md">
                 <div className="flex flex-row items-center gap-4">
                   <FaRegUserCircle size={30} />
@@ -108,12 +143,18 @@ const DetailUser = () => {
                 <p className="pb-4 mt-4 font-medium border-b border-gray-500">
                   <textarea
                     type="text"
+                    onChange={changeComment}
+                    value={comment.body}
                     className="w-full p-4 text-sm border-2 rounded-md outline-none focus:border-blue-500"
                     placeholder="Your comment"
                   ></textarea>
                 </p>
-                <button className="float-right px-4 py-2 mt-4 bg-white border border-black rounded-full">
-                  Comment
+                <button
+                  className="float-right px-4 py-2 mt-4 bg-white border border-black rounded-full disabled:bg-gray-400"
+                  onClick={addComment}
+                  disabled={loading}
+                >
+                  {loading ? "Loading..." : "Comment"}
                 </button>
               </div>
               {comments.map((comment) => (
@@ -121,9 +162,12 @@ const DetailUser = () => {
                   className="p-4 mb-4 bg-gray-200 border border-black rounded-md"
                   key={comment.id}
                 >
-                  <div className="flex flex-row items-center gap-4">
-                    <FaRegUserCircle size={30} />
-                    <p className="font-bold">{comment.user.fullName}</p>
+                  <div className="flex flex-row items-center justify-between">
+                    <div className="flex flex-row items-center gap-4">
+                      <FaRegUserCircle size={30} />
+                      <p className="font-bold">{comment.user.fullName}</p>
+                    </div>
+                    <BsThreeDotsVertical className="cursor-pointer" />
                   </div>
                   <p className="pb-4 mt-4 font-medium border-b border-gray-500">
                     {comment.body}
