@@ -10,7 +10,7 @@ import custom3 from "../assets/custom/custom3.png";
 import Printing from "../components/Printing";
 import OurPicks from "../components/OurPicks";
 import Products from "../components/Products";
-import Testimonial from "../components/Testimonial";
+import Resources from "../components/Resources";
 
 import picks1 from "../assets/picks/picks1.png";
 import picks2 from "../assets/picks/picks2.png";
@@ -24,8 +24,13 @@ import product4 from "../assets/products/product4.png";
 import product5 from "../assets/products/product5.png";
 import product6 from "../assets/products/product6.png";
 
+import testi1 from "../assets/testimonials/testi1.png";
+import testi2 from "../assets/testimonials/testi2.png";
+import testi3 from "../assets/testimonials/testi3.png";
+
 import resource1 from "../assets/resources/resource1.png";
 import resource2 from "../assets/resources/resource2.png";
+import Testimonials from "../components/Testimonials";
 
 const customs = [
   {
@@ -138,6 +143,7 @@ const testimonials = [
     position: "Director",
     comment:
       "Great quality products - Flags, programs for exceptional capacities, birthday, and occasion welcome are largely still mainstream on paper.",
+    image: testi1,
   },
   {
     id: 2,
@@ -145,6 +151,7 @@ const testimonials = [
     position: "Manager",
     comment:
       "Best services ever - Flags, programs for exceptional capacities, birthday, and are largely still mainstream on paper occasion welcome.",
+    image: testi2,
   },
   {
     id: 3,
@@ -152,6 +159,7 @@ const testimonials = [
     position: "Designer",
     comment:
       "Top noth support - Flags, programs for, birthday, and occasion welcome are largely still mainstream on paper exceptional capacities.",
+    image: testi3,
   },
 ];
 
@@ -168,7 +176,8 @@ const Dashboard = () => {
       <Printing />
       <OurPicks picks={picks} />
       <Products products={products} />
-      <Testimonial resources={resources} testimonials={testimonials} />
+      <Resources resources={resources} />
+      <Testimonials testimonials={testimonials} />
     </>
   );
 };
