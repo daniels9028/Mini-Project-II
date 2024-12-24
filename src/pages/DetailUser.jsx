@@ -100,6 +100,22 @@ const DetailUser = () => {
               <p className="mb-10 text-xl font-semibold border-b-2 border-black">
                 Comments
               </p>
+              <div className="p-4 mb-4 bg-gray-200 border border-black rounded-md">
+                <div className="flex flex-row items-center gap-4">
+                  <FaRegUserCircle size={30} />
+                  <p className="font-bold">Daniel</p>
+                </div>
+                <p className="pb-4 mt-4 font-medium border-b border-gray-500">
+                  <textarea
+                    type="text"
+                    className="w-full p-4 text-sm border-2 rounded-md outline-none focus:border-blue-500"
+                    placeholder="Your comment"
+                  ></textarea>
+                </p>
+                <button className="float-right px-4 py-2 mt-4 bg-white border border-black rounded-full">
+                  Comment
+                </button>
+              </div>
               {comments.map((comment) => (
                 <div
                   className="p-4 mb-4 bg-gray-200 border border-black rounded-md"
